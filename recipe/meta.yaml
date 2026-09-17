@@ -3,11 +3,10 @@
 {% set sha256 = "5d589152eb8071c02feab8ce6ab719e431a1fbc3e2b1700f5432632a8b9264dc" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://sourceware.org/pub/{{ name }}/{{ name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
   patches:
@@ -26,7 +25,7 @@ requirements:
     - pkg-config
     - perl
   host:
-    - zlib
+    - zlib {{ zlib }}
   run:
     - zlib
     # utilities such as ms_print, cg_annotate, cg_diff require perl or python.
@@ -44,7 +43,7 @@ test:
     - ms_print massif.out
 
 about:
-  home: http://valgrind.org
+  home: https://valgrind.org
   license: GPL-2.0-or-later
   license_family: GPL
   license_file: COPYING
@@ -58,8 +57,8 @@ about:
     branch-prediction profiler, and a heap profiler. It also includes three experimental tools: a stack/global array
     overrun detector, a second heap profiler that examines how heap blocks are used, and a SimPoint basic block vector
     generator.
-  doc_url: http://valgrind.org/docs/manual/manual.html
-  dev_url: http://valgrind.org/downloads/repository.html
+  doc_url: https://valgrind.org/docs/manual/manual.html
+  dev_url: https://valgrind.org/downloads/repository.html
 
 extra:
   recipe-maintainers:
